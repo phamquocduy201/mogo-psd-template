@@ -1,0 +1,10 @@
+section.blog 
+  .container 
+    +blockBox("Our stories", "Latest blog")
+    ul.blog-list 
+      +blogItem
+      +blogItem("./images/img-blog2.png", "14","Jan", "Sed do eiusmod tempor")
+      +blogItem("./images/img-blog3.png", "12","Jan", "Incididunt ut labore et dolore")
+section.map 
+  img.map-img(src="./images/img-map-icon.png")
+  h3.map-text Open map

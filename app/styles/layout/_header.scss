@@ -1,0 +1,214 @@
+.header {
+  background: linear-gradient(to bottom, rgba($primary-color,0.8), rgba($secondary-color,0.8)), url(../images/img-header-bg.jpg) no-repeat center center / cover;
+  padding: 26px 0;
+  * {
+    color: #fff;
+  }
+  --content-margin: 170px auto 160px;
+  --caption-fz: 7.2rem;
+  --caption-mb: 44px;
+  --title-fz: 10rem;
+  --title-pb: 70px;
+  --title-mb: 50px;
+  //HEADER TOP
+  &-top {
+    @include flexbox(baseline, space-between);
+    &__logo {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+    &__toggle {
+      align-self: center;
+      font-size: 3rem;
+      display: none;
+    }
+    &__menu {
+      height: 100%;
+      @include flexbox(center);
+    }
+    &__link {
+      text-transform: uppercase;
+      transition: 0.15s linear; 
+    }
+    &__icon {
+      font-size: 1.6rem;
+    }
+  }
+
+  //HEADER CONTENT
+  &-content {
+    max-width: 800px;
+    margin: var(--content-margin);
+    text-align: center;
+    &__caption {
+      font-family: $third-font;
+      font-size: var(--caption-fz);
+      text-transform: capitalize;
+      margin-bottom: var(--caption-mb);
+    }
+    &__title {
+      font-size: var(--title-fz);
+      font-weight: bold;
+      text-transform: uppercase;
+      line-height: 0.9;
+      padding-bottom: var(--title-pb);
+      margin-bottom: var(--title-mb);
+      position: relative;
+      &::before {
+        content: "";
+        @include absoluteCenter(left);
+        bottom: 0;
+        width: 60px;
+        height: 4px;
+        background-color: #fff;
+      }
+    }
+    &__more {
+      display: inline-block;
+      padding: 10px 30px;
+      border: 2px solid #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+  }
+
+  //HEADER BOTTOM
+  &-bottom {
+    $margin-spacing: 30px;
+    &__list {
+      display: flex;
+      align-items: center;
+      margin-left: -1 * $margin-spacing;
+    }
+    &__item {
+      width: calc(25% - 30px);
+      padding-top: 20px;
+      border-top: 4px solid #fff;
+      margin-left: $margin-spacing;
+      cursor: pointer;
+      position: relative;
+      opacity: 0.5;
+      transition: 0.15s linear;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 4px;
+        transform: translateY(-100%);
+        background-color: $primary-color;           
+        transition: 0.15s linear;
+      }
+      font-weight: bold;
+      &-number {
+        font-size: 1.8rem;
+        margin-right: 10px;
+      }
+      &-text {
+        text-transform: uppercase;
+      }
+      &:hover,
+      &--active {
+        opacity: 1;
+        &::before {
+          width: 70px;
+        }
+      }
+    }
+  }
+
+  //RESPONSIVE
+  @include minWidth(768px) {
+    &-top {
+      &__item:not(:first-of-type) {
+        margin-left: 5rem;
+      }
+      &__link {
+        position: relative;
+        &::before {
+          content: "";
+          position: absolute;
+          bottom: -12px;
+          left: 0;
+          width: 100%;
+          height: 4px;  
+          background-color: $secondary-color;
+          opacity: 0;
+          visibility: hidden;
+          transition: 0.15s linear;
+        }
+        &:hover {
+          color: $secondary-color;
+          &:before {
+            opacity: 1;
+            visibility: visible;
+          }
+        }
+      }
+    }
+  }
+  @include maxWidth(1023px) {
+    --content-margin: 100px auto 90px;
+  }
+  @include maxWidth(767px) {
+    --content-margin: 60px auto 50px;
+    --caption-fz: 3.5rem;
+    --caption-mb: 20px;
+    --title-fz: 5rem;
+    --title-pb: 50px;
+    --title-mb: 30px;
+    padding: 15px 0;
+    &-top {
+      &__toggle {
+        display: block;
+      }
+      &__menu {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 300px;
+        display: block;
+        background-color: #fff;
+        transform: translateX(100%);
+        transition: 0.15s linear;
+        z-index: 10;
+        &.is-expand {
+          transform: translateX(0);
+        }
+      } 
+      &__icon i {
+        display: block;
+        padding: 15px 30px;
+        color: $title-color;
+        &:hover {
+          color: $secondary-color;
+        }
+      }
+      &__link {
+        display: block;
+        color: $title-color;
+        padding: 15px 30px;
+        &:hover {
+          background-color: $secondary-color;
+          color: #fff;
+        }
+      }
+    }
+    &-bottom {
+      &__item {
+        &-text {
+          display: none;
+        }
+        &:hover,
+        &--active {
+          opacity: 1;
+          &::before {
+            width: 30px;
+          }
+        }
+      }
+    }
+  }
+}

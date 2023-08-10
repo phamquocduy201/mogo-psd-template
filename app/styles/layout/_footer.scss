@@ -1,0 +1,201 @@
+.footer {
+  background-color: $gray-color;
+  &-copyright {
+    padding: 2.5rem;
+    border-top: 1px solid $gray-medium-color;
+    text-align: center;
+    font-weight: 500;
+    span {
+      color: $primary-color;
+    }
+  }
+  &-header {
+    padding: 7rem 0;
+    @include flexbox(stretch, space-between);
+  }
+  &-heading {
+    display: inline-block;
+    height: 5rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #777777;
+    line-height: 0.8;
+  }
+  &-logo {
+    font-size: 4.6rem;
+    font-weight: bold;
+    color: $gray-dark-color;
+    margin-bottom: 2rem;
+  }
+  &-desc {
+    margin-bottom: 4rem;
+    p {
+      font-family: $secondary-font;
+      color: $text-color;
+      font-size: 1.5rem;
+      @include textClamp(4);
+    }
+  }
+  &-follower {
+    padding-bottom: 2rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid $gray-medium-color;
+    strong {
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+  }
+  &-social {
+    @include flexbox(center);
+    flex-wrap: wrap;
+    row-gap: 1rem;
+    margin-bottom: 4rem;
+    &-text {
+      font-family: $secondary-font;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: $text-color;
+      margin-right: 2rem;
+    }
+    &-icon {
+      @include flexbox(center);
+      flex-wrap: wrap;
+      row-gap: 5px;
+      a {
+        font-size: 2rem;
+        color: $third-color;
+        margin-right: 1rem;
+      }
+    }
+  }
+  &-form {
+    width: 100%;
+    max-width: 38rem;
+    @include flexbox;
+    input {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid $gray-medium-color;
+      border-right: none;
+      font-family: $secondary-font;
+      font-size: 1.5rem;
+      font-weight: 300;
+      color: $text-color;
+      line-height: normal;
+      &::-webkit-input-placeholder {
+        color: $text-color;
+        font-style: italic;
+      }
+    }
+    button {
+      flex: 1;
+      padding: 1.5rem 3rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      border: unset;
+      background-color: $third-color;
+      color: #fff;
+      font-style: 1.4rem;
+    }
+  }
+  // BLogs
+  &-blog {
+    &-item {
+      &:not(:last-of-type) {
+        margin-bottom: 3rem;
+      }
+    }
+    &-link {
+      @include flexbox(center);
+    }
+    &-img {
+      width: 12rem;
+      height: 8rem;
+      flex-shrink: 0;
+      object-fit: cover;
+    }
+    &-info {
+      margin-left: 2rem;
+    }
+    &-title {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      color: #777;
+      @include textClamp(2);
+      margin-bottom: 1rem;
+    }
+    &-date {
+      font-family: $secondary-font;
+      font-size: 1.3rem;
+      font-style: italic;
+      color: $text-color;
+    }
+  }
+  // Instagram
+  &-imgs {
+    @include flexbox;
+    flex-wrap: wrap;
+    margin-left: -2px;
+    margin-top: -2px;
+    margin-bottom: 2rem;
+  }
+  &-img {
+    width: calc(33.33% - 2px);
+    margin-left: 2px;
+    margin-top: 2px;
+    height: 0;
+    padding-bottom: 33.33%;
+    position: relative;
+    img {
+      @include absoluteFull;
+      object-fit: cover;
+    }
+  }
+  &-viewMore {
+    font-family: $secondary-font;
+    font-size: 1.3rem;
+    font-style: italic;
+    color: $text-color;
+  }
+  @include minWidth(1024px) {
+    &-item {
+      width: calc(35% - 3rem);
+      &:first-of-type {
+        width: calc(40% - 3rem);
+      }
+      &:last-of-type {
+        width: calc(25% - 3rem);
+      }
+    }
+  }
+  @include maxWidth(1023px) {
+    &-header {
+      display: block;
+    }
+    &-item {
+      &:not(:last-of-type) {
+        margin-bottom: 5rem;
+      }
+    }
+    &-form {
+      max-width: 100%;
+    }
+  }
+  @include maxWidth(767px) {
+    &-header {
+      padding: 5rem 0;
+    }
+    &-heading {
+      height: 4rem;
+    }
+    &-logo {
+      font-size: 3.6rem;
+    }
+    &-form {
+      button {
+        padding: 1.5rem;
+      }
+    }
+  }
+}

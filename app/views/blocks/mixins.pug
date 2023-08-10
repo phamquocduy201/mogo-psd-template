@@ -1,0 +1,94 @@
+mixin menuLink(pcontent, phref= "#")
+  li.header-top__item
+    a(href= phref class="header-top__link")= pcontent
+
+mixin menuIcon(pclass, phref= "#")
+  li.header-top__item
+    a(href= phref class="header-top__icon") 
+      i(class= pclass)
+
+mixin bottomItem(pnumber, ptext, pclass)
+  li(class= pclass).header-bottom__item
+    span.header-bottom__item-number= pnumber
+    span.header-bottom__item-text= ptext
+
+mixin blockBox(pcaption, ptitle, pdesc) 
+  .block-box
+    h3.block-box__caption= pcaption
+    h2.block-box__title= ptitle
+    if pdesc 
+      p.block-box__desc= pdesc  
+
+mixin blockList(psrc)
+  .block-list__item 
+    img(src= psrc, alt="")
+    .block-list__content 
+      if block 
+        block
+
+mixin serviceItem(psrc, ptitle, pdesc)
+  .services__item 
+    img(src= psrc).services__icon
+    .services__item-content 
+      .services__item-title= ptitle
+      .services__item-desc= pdesc
+
+mixin wedoItem(psrc, ptitle, pdesc, pactive="") 
+  .wedo-item 
+    .wedo-item-header
+      img(src= psrc).wedo-item-icon
+      h3.wedo-item-title= ptitle 
+      if pactive == "is-active"
+        i.fal.fa-angle-up.wedo-item-arrow
+      else 
+        i.fal.fa-angle-down.wedo-item-arrow
+    .wedo-item-desc(class= pactive)
+      p= pdesc
+
+mixin workItem(psrc="./images/img-work1.png", picon="fa fa-heart", ptitle="warm heart", pdesc="Lorem ipsum dolor sit amet")
+  .work-item 
+    img(src= psrc)
+    .work-item-content 
+      i(class= picon).work-item-icon
+      h3.work-item-title= ptitle
+      p.work-item-desc= pdesc
+
+mixin clientItem(psrc= "./images/img-people1.png", pname= "Matthew Dix", pjob="Graphic design", pdesc="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad nostrum, laborum nulla dicta totam dolorum ducimus labore provident nesciunt enim hic dolorem.") 
+  li.client-item 
+    img(src= psrc).client-avatar
+    .client-item-content
+      h3.client-name= pname
+      span.client-job= pjob
+      p.client-desc= pdesc
+
+mixin blogItem(psrc="./images/img-blog1.png", pnumber="15", ptext="Jan", ptitle="Lorem ipsum dolor sit amet", pdesc="Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis, placeat iure non necessitatibus magnam commodi totam.",pviews="542", pcomment="17" )
+  li.blog-item 
+    .blog-media 
+      img.blog-media-img(src=psrc)
+      .blog-media-date 
+        .blog-media-date-number= pnumber
+        .blog-media-date-text= ptext
+    .blog-content 
+      h3.blog-title= ptitle
+      .blog-info 
+        .blog-desc 
+          p.blog-desc-inner= pdesc
+        .blog-meta 
+          .blog-meta-item 
+            i.fa.fa-eye.blog-meta-icon 
+            span.blog-meta-number= pviews
+          .blog-meta-item 
+            i.fa.fa-comment.blog-meta-icon
+            span.blog-meta-number= pcomment
+
+mixin quoteItem(data)
+  .quote-item
+    if data.type == false
+      .quote-icon  
+        img(src= data.src)
+    else 
+      .quote-img  
+        img(src= data.src)
+    .quote-info 
+      p.quote-desc= data.desc
+      span.quote-author= data.author

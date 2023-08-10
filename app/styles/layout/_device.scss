@@ -1,0 +1,35 @@
+.device {
+  padding-top: 110px;
+  background: linear-gradient(to bottom, rgba(#fff, 0.7), rgba(#fff, 0.6)),url(../images/img-device-bg.png) no-repeat center center / cover;
+  .container {
+    position: relative;
+  }
+  &__img {
+    display: inline-block;
+    //margin giá trị âm chỉ áp dụng cho thẻ inline-block
+    width: 550px;
+    margin-bottom: -8.1rem;
+    @include absoluteCenter("left",relative);
+  }
+  @include maxWidth(767px) {
+    padding-top: 50px;
+  }
+  @include maxWidth(630px) {
+    &__img {
+      width: 450px;
+      margin-bottom: -6.7rem;
+    }
+  }
+  @include maxWidth(479px) {
+    &__img {
+      width: 305px;
+      margin-bottom: -4.6rem;;
+    }
+  }
+  @include maxWidth(319px) {
+    &__img {
+      width: 230px;
+      margin-bottom: -3.5rem;;
+    }
+  }
+}

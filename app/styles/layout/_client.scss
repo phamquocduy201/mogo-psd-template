@@ -1,0 +1,92 @@
+.client {
+  --avatar-size: 11.5rem;
+  --content-ml: 3rem;
+  padding: 100px 0 50px;
+  background: linear-gradient(to bottom, rgba(#fff, 0.8), rgba(#fff, 0.8)) ,url(../images/img-people-bg.png) no-repeat center center / cover;
+  &-list {
+    padding: 0 40px;
+    margin-top: 8rem;
+    // @include flexbox(stretch,space-between, row, flex, wrap);
+    @include flexbox2((
+      justify-content: space-between,
+      flex-wrap: wrap,
+    ));
+  }
+  &-item {
+    width: calc(50% - 4rem);
+    @include flexbox(flex-start);
+    margin-bottom: 7rem;
+    &-content {
+      margin-left: var(--content-ml);
+      max-width: calc(100% - var(--avatar-size) - var(--content-ml));
+    }
+  }
+  &-avatar {
+    @include size(var(--avatar-size));
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  &-name {
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    @include textClamp;
+  }
+  &-job {
+    display: inline-block;
+    font-family: $secondary-font;
+    font-size: 1.5rem;
+    font-weight: 300;
+    font-style: italic;
+    text-transform: capitalize;
+    padding-bottom: 2rem;
+    margin-bottom: 2.6rem;
+    @include textClamp;
+    position: relative;
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      @include size(6rem, 4px);
+      background-color: $primary-color;
+    }
+  }
+  &-desc {
+    font-family: $secondary-font;
+    font-size: 1.5rem;
+    color: $text-color;
+    @include textClamp(3);
+  }
+  @include maxWidth(1279px) {
+    --avatar-size: 10.5rem;
+  }
+  @include maxWidth(1023px) {
+    &-list {
+      padding: unset;
+    }
+    &-item {
+      width: calc(50% - 3rem);
+    }
+  }
+  @include maxWidth(767px) {
+    --avatar-size: 7.5rem;
+    padding: 5rem 0 1rem;
+    &-list {
+      display: block;
+      margin-top: 5rem;
+    }
+    &-item {
+      width: 100%;
+      margin-bottom: 4rem;
+    }
+    &-job {
+      padding-bottom: 2rem;
+      margin-bottom: 1.5rem;
+    }
+  }
+  @include maxWidth(479px) {
+    --content-ml: 1.5rem;
+  }
+}

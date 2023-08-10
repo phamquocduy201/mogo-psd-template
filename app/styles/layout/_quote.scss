@@ -1,0 +1,133 @@
+.quote {
+  background-color: $gray-color;
+  padding: 70px 0;
+  &-item {
+    @include flexbox(stretch);
+    padding: 0 55px;
+    will-change: transform;
+  }
+  &-img {
+    flex-shrink: 0;
+    img {
+      margin-right: 3rem;
+      @include size(21rem);
+      object-fit: cover;
+      border-radius: 50%;
+    }
+  }
+  &-icon {
+    @include size(150px);
+    @include flexbox(center, center);
+    border: 4px solid $third-color;
+    flex-shrink: 0;
+    margin-right: 60px;
+  }
+  &-info {
+    @include flexbox(flex-start, space-between, column);
+  }
+  &-desc {
+    font-family: $secondary-font;
+    font-size: 2.4rem;
+    font-weight: 300;
+    font-style: italic;
+    color: $text-color;
+    @include textClamp(3);
+  }
+  &-author {
+    font-family: $third-font;
+    font-size: 2.4rem;
+    padding-left: 70px;
+    position: relative;
+    &::before {
+      content: "";
+      @include absoluteCenter("top");
+      left: 0;
+      @include size(60px,4px);
+      background-color: $primary-color;
+    }
+  }
+
+  // Slick slider
+  .slick-initialized .slick-slide {
+    display: flex;
+  }
+
+  .slick-active.circle {
+    background-color: $secondary-color;
+  }
+
+  .circle {
+    @include size(1rem);
+    border-radius: 50%;
+    border: 1px solid $primary-color;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: all 0.15s linear;
+    &:hover {
+      background-color: $secondary-color;
+    }
+  }
+
+  .slick-dots {
+    @include flexbox(center, center);
+    margin-top: 2rem;
+  }
+
+  .slick-arrow{
+    height: 100%;
+    background: $gray-color;
+    border: unset;
+    font-size: 3rem;
+    font-weight: 500;
+    color: $gray-dark-color;
+    padding: 20px;
+    cursor: pointer;
+    @include absoluteCenter("top");
+    z-index: 10;
+  }
+
+  .slick-prev {
+    left: 0;
+  }
+  
+  .slick-next {
+    right: 0;
+  }
+
+  @include maxWidth(1023px) {
+    &-img img {
+      @include size(18rem);
+    }
+  }
+
+  @include maxWidth(767px) {
+    padding: 50px 0;
+    // Slick slider
+    .slick-initialized .slick-slide {
+      padding: 0 1rem;
+    }
+    &-item {
+      padding: unset;
+      flex-direction: column;
+    }
+    &-img img, &-icon {
+      margin: 0 auto;
+    }
+    &-img img {
+      @include size(15rem);
+    }
+    &-icon {
+      @include size(100px);
+    }
+    &-img img, &-icon, &-desc { 
+      margin-bottom: 20px;
+    }
+    &-desc {
+      display: block;
+      text-align: justify;
+    }
+    &-desc, &-author {
+      font-size: 2rem;
+    }
+  }
+}

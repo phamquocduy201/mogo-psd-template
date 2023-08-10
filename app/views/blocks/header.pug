@@ -1,0 +1,23 @@
+header.header 
+  .container 
+    .header-top 
+      .header-top__logo MoGo
+      i.fa.fa-bars.header-top__toggle
+      ul.header-top__menu
+        +menuLink("About")
+        +menuLink("Service")
+        +menuLink("Work")
+        +menuLink("Blog")
+        +menuLink("Contact")
+        +menuIcon("fa fa-shopping-cart", "#YUD201")
+        +menuIcon("fa fa-search")
+    .header-content 
+      h2.header-content__caption Creative template
+      h1.header-content__title Welcom to mogo
+      a.header-content__more(href="#") Learn more
+    .header-bottom
+      ul.header-bottom__list 
+        +bottomItem("01","intro","header-bottom__item--active")
+        +bottomItem("02","work")
+        +bottomItem("03","about")
+        +bottomItem("04","contacts")
